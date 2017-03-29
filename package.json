@@ -111,7 +111,8 @@
       {
         "command": "extension.ezfvTextarea",
         "key": "Ctrl+Shift+e a"
-      }
+      },
+      { "key": "Alt+s", "command": "editor.action.insertSnippet"}
     ],
     "snippets": [
       {
