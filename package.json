@@ -1,20 +1,20 @@
 {
     "name": "vs-ez-fv",
     "displayName": "EZ-FV",
-    "description": "FocusVision's Decipher Shortcuts",
-    "version": "0.0.2",
+    "description": "Shortcuts for FocusVision's Decipher platform",
+    "version": "0.1.0",
     "publisher": "matt92martin",
     "engines": {
         "vscode": "^1.10.0"
     },
     "bugs": {
-		"url": "https://github.com/matt92martin/vs-ez-fv/issues"
-	},
-	"homepage": "https://github.com/matt92martin/vs-ez-fv/blob/master/README.md",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/matt92martin/vs-ez-fv.git"
-	},
+        "url": "https://github.com/matt92martin/vs-ez-fv/issues"
+    },
+    "homepage": "https://github.com/matt92martin/vs-ez-fv/blob/master/README.md",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/matt92martin/vs-ez-fv.git"
+    },
     "categories": [
         "Other",
         "Snippets"
