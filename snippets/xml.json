@@ -1,0 +1,337 @@
+// TM_SELECTED_TEXT The currently selected text or the empty string
+// TM_CURRENT_LINE The contents of the current line
+// TM_CURRENT_WORD The contents of the word under cursor or the empty string
+// TM_LINE_INDEX The zero-index based line number
+// TM_LINE_NUMBER The one-index based line number
+// TM_FILENAME The filename of the current document
+// TM_DIRECTORY The directory of the current document
+// TM_FILEPATH The full file path of the current document
+
+{
+    "Exclusive": {
+        "prefix": "ee",
+        "body": [
+            "exclusive=\"1\" randomize=\"0\""
+        ]
+    },
+    "Aggregate": {
+        "prefix": "aa",
+        "body": [
+            "aggregate=\"0\" percentages=\"0\""
+        ]
+    },
+    "Anchor Tag": {
+        "prefix": "AnchorTag",
+        "body": [
+            "<a href=\"$0$TM_SELECTED_TEXT\" target=\"_blank\">$TM_SELECTED_TEXT</a>"
+        ]
+    }
+    ,"Block Tag": {
+        "prefix": "block",
+        "body": [
+            "<block label=\"${1:label}\" cond=\"${2:Condition}\">",
+            "$0",
+            "</block>"
+        ]
+    }
+    ,"CSS Style Block": {
+        "prefix": "css",
+        "body": [
+            "<style name=\"respview.client.css\"><![CDATA[",
+            "<style>",
+            "${0:CSS}",
+            "</style>",
+            "]]></style>"
+        ]
+    }
+    ,"Captcha 1": {
+        "prefix": "captcha",
+        "body": [
+            "<logic uses=\"recaptcha.1\" label=\"Q99\"/>",
+            "",
+            "<term cond=\"not Q99.human\">Captcha fail</term>"
+        ]
+    }
+    ,"Div Text Center": {
+        "prefix": "center",
+        "body": [
+            "<div style=\"text-align: center;\">$TM_SELECTED_TEXT</div>"
+        ]
+    }
+    ,"Comment": {
+        "prefix": "comment",
+        "body": [
+            "<comment>$TM_SELECTED_TEXT</comment>$0"
+        ]
+    }
+    ,"Condition Attribute": {
+        "prefix": "cond",
+        "body": [
+            "cond=\"${0:Condition}\""
+        ]
+    }
+    ,"Copy Cells": {
+        "prefix": "copy",
+        "body": [
+            "onLoad=\"copy('${1}', rows=True${0:, exclude=''})\""
+        ]
+    }
+    ,"Exec Tag": {
+        "prefix": "exec",
+        "body": [
+            "<exec>",
+            "$0",
+            "</exec>"
+        ]
+    }
+    ,"GoTo Tag": {
+        "prefix": "goto",
+        "body": [
+            "<goto target=\"$1\" cond=\"$0\"/>"
+        ]
+    }
+    ,"JS Style Block": {
+        "prefix": "js",
+        "body": [
+            "<style name=\"respview.client.js\"><![CDATA[",
+            "<script>",
+            "$0",
+            "</script>",
+            "]]></style>"
+        ]
+    }
+    ,"Label Tag": {
+        "prefix": "label",
+        "body": [
+            "<label label=\"$0\" />"
+        ]
+    }
+    ,"Language Tag": {
+        "prefix": "languages",
+        "body": [
+            "<languages default=\"english\">",
+            "  <language name=\"english\" var=\"co\" value=\"us\"/>",
+            "</languages>"
+        ]
+    }
+    ,"Left Blank Legend": {
+        "prefix": "leftblank",
+        "body": [
+            "<style name=\"question.left-blank-legend\"> <![CDATA[",
+            "<$(tag) class=\"cell nonempty legend col-legend-top col-legend-basic \\${\"desktop\" if this.grouping.cols else \"mobile\"} border-collapse\">${0:Res}</$(tag)>",
+            "]]></style>"
+        ]
+    }
+    ,"Line Break": {
+        "prefix": "br1",
+        "body": [
+            "<br/>"
+        ]
+    }
+    ,"Line Breaks": {
+        "prefix": "br",
+        "body": [
+            "<br/><br/>"
+        ]
+    }
+    ,"List Display": {
+        "prefix": "ld",
+        "body": [
+            "ss:listDisplay=\"0\""
+        ]
+    }
+    ,"Note Tag": {
+        "prefix": "note",
+        "body": [
+            "<note>$0</note>"
+        ]
+    }
+    ,"Open Attribute": {
+        "prefix": "oe",
+        "body": [
+            "open=\"1\" openSize=\"25\" randomize=\"0\""
+        ]
+    }
+    ,"Page.head Style Block": {
+        "prefix": "page.head",
+        "body": [
+            "<style name=\"page.head\"><![CDATA[",
+            "<style>",
+            "$0",
+            "</style>",
+            "]]></style>"
+        ]
+    }
+    ,"Post Text Attribute": {
+        "prefix": "pt",
+        "body": [
+            "ss:postText=\"$0\""
+        ]
+    }
+    ,"Question.After Style Block": {
+        "prefix": "question.after",
+        "body": [
+            "<style name=\"question.after\" wrap=\"ready\"><![CDATA[",
+            "$0",
+            "]]></style>"
+        ]
+    }
+    ,"Quota Tag": {
+        "prefix": "quota",
+        "body": [
+            "<quota sheet=\"$0\"/>"
+        ]
+    }
+    ,"Randomize Attribute": {
+        "prefix": "ra",
+        "body": [
+            "randomize=\"0\""
+        ]
+    }
+    ,"Rating Attribute": {
+        "prefix": "rating",
+        "body": [
+            "type=\"rating\"${0: values=\"order\"}"
+        ]
+    }
+    ,"Res Tag": {
+        "prefix": "res",
+        "body": [
+            "<res label=\"$1\">$0</res>"
+        ]
+    }
+    ,"Shuffle Attribute": {
+        "prefix": "sh",
+        "body": [
+            "shuffle=\"rows\""
+        ]
+    }
+    ,"States": {
+        "prefix": "states",
+        "body": [
+  "  <choice label=\"ch1\">Alabama</choice>",
+  "  <choice label=\"ch2\">Alaska</choice>",
+  "  <choice label=\"ch3\">Arizona</choice>",
+  "  <choice label=\"ch4\">Arkansas</choice>",
+  "  <choice label=\"ch5\">California</choice>",
+  "  <choice label=\"ch6\">Colorado</choice>",
+  "  <choice label=\"ch7\">Connecticut</choice>",
+  "  <choice label=\"ch8\">Delaware</choice>",
+  "  <choice label=\"ch9\">District of Columbia</choice>",
+  "  <choice label=\"ch10\">Florida</choice>",
+  "  <choice label=\"ch11\">Georgia</choice>",
+  "  <choice label=\"ch12\">Hawaii</choice>",
+  "  <choice label=\"ch13\">Idaho</choice>",
+  "  <choice label=\"ch14\">Illinois</choice>",
+  "  <choice label=\"ch15\">Indiana</choice>",
+  "  <choice label=\"ch16\">Iowa</choice>",
+  "  <choice label=\"ch17\">Kansas</choice>",
+  "  <choice label=\"ch18\">Kentucky</choice>",
+  "  <choice label=\"ch19\">Louisiana</choice>",
+  "  <choice label=\"ch20\">Maine</choice>",
+  "  <choice label=\"ch21\">Maryland</choice>",
+  "  <choice label=\"ch22\">Massachusetts</choice>",
+  "  <choice label=\"ch23\">Michigan</choice>",
+  "  <choice label=\"ch24\">Minnesota</choice>",
+  "  <choice label=\"ch25\">Mississippi</choice>",
+  "  <choice label=\"ch26\">Missouri</choice>",
+  "  <choice label=\"ch27\">Montana</choice>",
+  "  <choice label=\"ch28\">Nebraska</choice>",
+  "  <choice label=\"ch29\">Nevada</choice>",
+  "  <choice label=\"ch30\">New Hampshire</choice>",
+  "  <choice label=\"ch31\">New Jersey</choice>",
+  "  <choice label=\"ch32\">New Mexico</choice>",
+  "  <choice label=\"ch33\">New York</choice>",
+  "  <choice label=\"ch34\">North Carolina</choice>",
+  "  <choice label=\"ch35\">North Dakota</choice>",
+  "  <choice label=\"ch36\">Ohio</choice>",
+  "  <choice label=\"ch37\">Oklahoma</choice>",
+  "  <choice label=\"ch38\">Oregon</choice>",
+  "  <choice label=\"ch39\">Pennsylvania</choice>",
+  "  <choice label=\"ch40\">Rhode Island</choice>",
+  "  <choice label=\"ch41\">South Carolina</choice>",
+  "  <choice label=\"ch42\">South Dakota</choice>",
+  "  <choice label=\"ch43\">Tennessee</choice>",
+  "  <choice label=\"ch44\">Texas</choice>",
+  "  <choice label=\"ch45\">Utah</choice>",
+  "  <choice label=\"ch46\">Vermont</choice>",
+  "  <choice label=\"ch47\">Virginia</choice>",
+  "  <choice label=\"ch48\">Washington</choice>",
+  "  <choice label=\"ch49\">West Virginia</choice>",
+  "  <choice label=\"ch50\">Wisconsin</choice>",
+  "  <choice label=\"ch51\">Wyoming</choice>",
+  "  <choice label=\"ch52\">Other</choice>"
+        ]
+    }
+    ,"Suspend Tag": {
+        "prefix": "su",
+        "body": [
+            "<suspend/>"
+        ]
+    }
+    ,"Term Tag": {
+        "prefix": "term",
+        "body": [
+            "<term cond=\"$1\">$0</term>"
+        ]
+    }
+    ,"Todo Comment": {
+        "prefix": "todo",
+        "body": [
+            "<!-- todo: $0 -->"
+        ]
+    }
+    ,"Validate Tag": {
+        "prefix": "validate",
+        "body": [
+            "<validate>",
+            "$0",
+            "</validate>"
+        ]
+    }
+    ,"Var Tag": {
+        "prefix": "var",
+        "body": [
+            "<var name=\"${0:variablename}\"${1: unique=\"1\"}${2: required=\"1\"}${3: filename=\"invited.txt\"} />"
+        ]
+    }
+    ,"Verify Attribute": {
+        "prefix": "verify",
+        "body": [
+            "verify=\"${0:range(0,100)}\""
+        ]
+    }
+    ,"Virtual Tag": {
+        "prefix": "virtual",
+        "body": [
+            "<virtual>",
+            "$0",
+            "</virtual>"
+        ]
+    }
+    ,"Where(Execute)": {
+        "prefix": "execute",
+        "body": [
+            "where=\"execute\""
+        ]
+    }
+    ,"Where(Report)": {
+        "prefix": "rep",
+        "body": [
+            "where=\"report\""
+        ]
+    }
+    ,"Right Left Fix": {
+        "prefix": "rtlfix",
+        "body": [
+            "&#x200E;"
+        ]
+    }
+    // ,"": {
+    //     "prefix": "",
+    //     "body": [
+    //         ""
+    //     ]
+    // }
+
+}

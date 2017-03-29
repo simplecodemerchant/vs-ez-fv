@@ -1,0 +1,137 @@
+{
+  "name": "ezfv",
+  "displayName": "EZ-FV",
+  "description": "FocusVision's Decipher Shortcuts",
+  "version": "0.0.1",
+  "publisher": "matt92martin",
+  "engines": {
+    "vscode": "^1.10.0"
+  },
+  "categories": [
+    "Other",
+    "Snippets"
+  ],
+  "activationEvents": [
+    "onLanguage:xml",
+    "onLanguage:plaintext"
+  ],
+  "main": "./out/src/extension",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.ezfvRow",
+        "title": "ez::rows"
+      },
+      {
+        "command": "extension.ezfvCol",
+        "title": "ez::cols"
+      },
+      {
+        "command": "extension.ezfvChoice",
+        "title": "ez::choices"
+      },
+      {
+        "command": "extension.ezfvPipe",
+        "title": "ez::pipe"
+      },
+      {
+        "command": "extension.ezfvRadio",
+        "title": "ez::radio"
+      },
+      {
+        "command": "extension.ezfvCheckbox",
+        "title": "ez::checkbox"
+      },
+      {
+        "command": "extension.ezfvFloat",
+        "title": "ez::float"
+      },
+      {
+        "command": "extension.ezfvNumber",
+        "title": "ez::number"
+      },
+      {
+        "command": "extension.ezfvSelect",
+        "title": "ez::select"
+      },
+      {
+        "command": "extension.ezfvText",
+        "title": "ez::text"
+      },
+      {
+        "command": "extension.ezfvTextarea",
+        "title": "ez::textarea"
+      },
+      {
+        "command": "extension.ezfvStrip",
+        "title": "ez::strip tags"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "extension.ezfvRow",
+        "key": "Ctrl+1"
+      },
+      {
+        "command": "extension.ezfvCol",
+        "key": "Ctrl+2"
+      },
+      {
+        "command": "extension.ezfvChoice",
+        "key": "Ctrl+3"
+      },
+      {
+        "command": "extension.ezfvPipe",
+        "key": "Ctrl+4"
+      },
+      {
+        "command": "extension.ezfvRadio",
+        "key": "Ctrl+Shift+r"
+      },
+      {
+        "command": "extension.ezfvCheckbox",
+        "key": "Ctrl+Shift+c"
+      },
+      {
+        "command": "extension.ezfvNumber",
+        "key": "Ctrl+Shift+n"
+      },
+      {
+        "command": "extension.ezfvFloat",
+        "key": "Ctrl+Shift+e f"
+      },
+      {
+        "command": "extension.ezfvSelect",
+        "key": "Ctrl+Shift+e s"
+      },
+      {
+        "command": "extension.ezfvText",
+        "key": "Ctrl+Shift+e t"
+      },
+      {
+        "command": "extension.ezfvTextarea",
+        "key": "Ctrl+Shift+e a"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "xml",
+        "path": "./snippets/xml.json"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "tsc -p ./",
+    "compile": "tsc -watch -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "test": "node ./node_modules/vscode/bin/test"
+  },
+  "devDependencies": {
+    "typescript": "^2.0.3",
+    "vscode": "^1.0.0",
+    "mocha": "^2.3.3",
+    "@types/node": "^6.0.40",
+    "@types/mocha": "^2.2.32"
+  },
+  "dependencies": {}
+}
