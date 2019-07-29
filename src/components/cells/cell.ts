@@ -1,7 +1,9 @@
 import CellLabelConstructor from './cell-label';
 
+type CellType = 'row' | 'col' | 'choice' | 'case'
+
 export default class CellConstructor{
-    type:string;
+    type:CellType ;
     extra:string = "";
     prelabel:string;
     extraCheck:RegExp;
@@ -33,9 +35,6 @@ export default class CellConstructor{
         let cells = CellLabelConstructor( this.prelabel, idx, input );
 
         if ( this.type === 'case' ) { cells.push({label: 'c999', content: 'BAD PIPE'}) }
-
-        console.log(this.type);
-        console.log( cells);
 
         cells = cells.map( ({label, content}, idx) => {
         

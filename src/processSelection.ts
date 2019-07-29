@@ -17,19 +17,22 @@ import * as Components from './components';
 import OneOffPointer from './helpers/one_offs/one_offs';
 
 
-function processSelection( e: TextEditor, d: TextDocument, sel: Selection[], task ) {
-    let replaceRanges: Selection[] = e.selections;
+function processSelection( task ) {
+    const e =   window.activeTextEditor;
+    const d =   e.document;
+    const sel = e.selections;
+    // let replaceRanges: Selection[] = e.selections;
 
 	e.edit( function ( edit ) {
         
-		for ( var x = 0; x < sel.length; x++ ) {
+		for ( let x = 0; x < sel.length; x++ ) {
 			let txt: string = CleanText( d.getText( new Range( sel[x].start, sel[x].end ) ) ).trim();
 
             if ( txt.length > 0 ){
                 txt = task.run( x, txt );
 
                 if ( txt ){
-	                replaceRanges = [];
+	                // replaceRanges = [];
 			        edit.replace( sel[x], txt );
                 }
                 else{
@@ -51,36 +54,15 @@ function processSelection( e: TextEditor, d: TextDocument, sel: Selection[], tas
 
 }
 
-
-
-export default function ezfv( opt ){
-
-        let e = window.activeTextEditor;
-        let d = e.document;
-        let sel = e.selections;
-
-        try{
-
-            if ( ['row','col','choice'].indexOf(opt) !== -1 ) {
-                processSelection( e,d,sel, new Components.CellConstructor( opt ) );                
-            }
-            
-            else if ( ['radio','checkbox','float','number','select','text','textarea'].indexOf(opt) !== -1 ) {
-                processSelection( e,d,sel, new Components.QuestionConstructor( opt ) );
-            }
-
-            else if ( ['pipe','strip'].indexOf(opt) !== -1 ) {
-                processSelection( e,d,sel, new OneOffPointer( opt ) );
-            }
-
-            else {
-                window.showInformationMessage('Looks like something went wrong');
-            }
-
-        }
-        catch(e){
-            console.log(e);
-        }
-        
-
-}
+export const row =      () => processSelection(new Components.CellConstructor( 'row' ));
+export const col =      () => processSelection(new Components.CellConstructor( 'col' ));
+export const choice =   () => processSelection(new Components.CellConstructor( 'choice' ));
+export const pipe =     () => processSelection(new OneOffPointer('pipe'));
+export const strip =    () => processSelection(new OneOffPointer('strip'));
+export const radio =    () => processSelection(new Components.QuestionConstructor('radio'));
+export const checkbox = () => processSelection(new Components.QuestionConstructor('checkbox'));
+export const float =    () => processSelection(new Components.QuestionConstructor('float'));
+export const number =   () => processSelection(new Components.QuestionConstructor('number'));
+export const select =   () => processSelection(new Components.QuestionConstructor('select'));
+export const text =     () => processSelection(new Components.QuestionConstructor('text'));
+export const textarea = () => processSelection(new Components.QuestionConstructor('textarea'));

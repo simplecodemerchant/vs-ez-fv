@@ -12,42 +12,48 @@ import {
     window
 
  } from 'vscode';
- import ezfv from './processSelection';
+ import {
+     row,
+     col,
+     choice,
+     pipe,
+     radio,
+     checkbox,
+     float,
+     number,
+     select,
+     text,
+     textarea,
+     strip
+ } from './processSelection';
 
 
 export function activate(context: ExtensionContext) {
-    console.log('ez-fv has been loaded.');
+    
+    const actions = [
+        ['extension.ezfvRow',      row],
+        ['extension.ezfvCol',      col],
+        ['extension.ezfvChoice',   choice],
+        ['extension.ezfvPipe',     pipe],
+        ['extension.ezfvRadio',    radio],
+        ['extension.ezfvCheckbox', checkbox],
+        ['extension.ezfvFloat',    float],
+        ['extension.ezfvNumber',   number],
+        ['extension.ezfvSelect',   select],
+        ['extension.ezfvText',     text],
+        ['extension.ezfvTextarea', textarea],
+        ['extension.ezfvStrip',    strip],
+    ];
 
-    var row        = commands.registerCommand('extension.ezfvRow', () =>        { ezfv('row') });
-    var col        = commands.registerCommand('extension.ezfvCol', () =>        { ezfv('col') });
-    var choice     = commands.registerCommand('extension.ezfvChoice', () =>     { ezfv('choice') });
-    var pipe       = commands.registerCommand('extension.ezfvPipe', () =>       { ezfv('pipe') });
+    const subs = actions.map((pair: [string, any]): any => {
 
-    var radio      = commands.registerCommand('extension.ezfvRadio', () =>      { ezfv('radio') });
-    var checkbox   = commands.registerCommand('extension.ezfvCheckbox', () =>   { ezfv('checkbox') });
-    var float      = commands.registerCommand('extension.ezfvFloat', () =>      { ezfv('float') });
-    var number     = commands.registerCommand('extension.ezfvNumber', () =>     { ezfv('number') });
-    var select     = commands.registerCommand('extension.ezfvSelect', () =>     { ezfv('select') });
-    var text       = commands.registerCommand('extension.ezfvText', () =>       { ezfv('text') });
-    var textarea   = commands.registerCommand('extension.ezfvTextarea', () =>   { ezfv('textarea') });
+        const [name, func] = pair;
 
-    var strip      = commands.registerCommand('extension.ezfvStrip', () =>      { ezfv('strip') });
+        return commands.registerCommand(name, func);
 
+    });
 
-    context.subscriptions.push(
-        row,
-        col,
-        choice,
-        pipe,
-        radio,
-        checkbox,
-        float,
-        number,
-        select,
-        text,
-        textarea,
-        strip
-    );
+    context.subscriptions.push(...subs);
 }
 
 
