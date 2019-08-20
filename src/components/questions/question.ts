@@ -11,7 +11,7 @@ export default class QuestionConstructor {
         this.type = type;
     }
 
-    run ( idx, input ){
+    run ( input ){
         const question = QuestionLabelConstructor(input);
 
         if ( !question ){ return false; }

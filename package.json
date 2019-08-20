@@ -73,6 +73,10 @@
             {
                 "command": "extension.ezfvStrip",
                 "title": "ez::strip tags"
+            },
+            {
+                "command": "extension.ezfvInsertNums",
+                "title": "ez::insert nums"
             }
         ],
         "keybindings": [
