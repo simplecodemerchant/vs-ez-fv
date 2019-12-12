@@ -1,19 +1,35 @@
 import Window from '../helpers/window'
+import { type } from 'os';
 
 
 
 class InsertNums{
-    startingPoint: number|string;
+
+    starting_point: any;
+    current: any;
     e: any;
     d: any;
     sels: any;
     window: any;
-    alphabet: string[] = 'abcdefghijklmnopqrstuvwxyz'.split('');
+    // alphabet: string[] = 'abcdefghijklmnopqrstuvwxyz'.split('');
+    alpha: boolean = false;
+    upperCase: boolean = true;
 
     constructor(sp: number|string){
-        this.startingPoint = sp;
+        // this.starting_point = sp
+        this.current = sp
+
+        if (typeof(sp) === 'string'){
+            this.alpha = true
+            
+            if (sp === sp.toLocaleLowerCase()){
+                this.upperCase = false
+            }
+        }
+
     }
-    update_window() {
+    
+    get_window() {
         const {
             editor: e,
             document: d,
@@ -26,37 +42,44 @@ class InsertNums{
         this.sels = sels;
         this.window = window;
     }
-    string_start_point(sp: string, idx: number) {
-        const string_array = sp.toString().length;
-        const char = String.fromCharCode( 65 + idx )
-        // const cur_idx = this.alphabet.indexOf(sp);
-        
-        // return this.alphabet[cur_idx + 1];
-        return char;
+
+    alpha_to_num(l){
+        return l.split('').reduce((r, x) => r * 26 + parseInt(x, 36) - 9, 0) - 1;
     }
-    update_starting_point(idx: number) {
+
+    num_to_alpha(i){
+        let num: any = i + 1
+        let ret: any = ''
+      
+        for (let a = 1, b = 26; (num -= a) >= 0; a = b, b *= 26) {
+          ret = String.fromCharCode(parseInt(`${(num % b) / a}`) + 65) + ret
+        }
+
+        return ret
+    }
+
+    update() {
         try {
-            switch(typeof this.startingPoint){
-                case 'number': 
-                    this.startingPoint = this.startingPoint + 1;
-                    return;
-                case 'string':
-                    this.startingPoint = this.string_start_point(this.startingPoint, idx);
-                    return;
-                default:
-                    return;
+            if (this.alpha){
+                const idx: number = this.alpha_to_num(this.current)
+                const alpha: string = this.num_to_alpha(idx + 1)
+                this.current = this.upperCase ? alpha.toUpperCase() : alpha.toLowerCase()
+            } else {
+                this.current = this.current + 1
             }
         } catch (e) {
-            throw e;
+            throw e
         }
     }
+
     write(){
-        this.update_window()
+        this.get_window()
         
         this.e.edit((edit) => {
-            this.sels.forEach((sel, idx) => {
-                edit.replace(sel, this.startingPoint.toString());
-                this.update_starting_point(idx);
+            this.sels.forEach((sel) => {
+                
+                edit.replace(sel, this.current.toString());
+                this.update();
             })
         })
 
@@ -65,6 +88,7 @@ class InsertNums{
     run(){
         this.write()
     }
+
 }
 
 export default function(){
