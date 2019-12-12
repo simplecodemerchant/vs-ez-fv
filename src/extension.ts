@@ -1,48 +1,27 @@
-'use strict';
 import { 
     ExtensionContext,
-    commands,
-    Position,
-    Selection,
-    TextEditor,
-    TextDocument,
-    Range,
-    QuickPickItem,
-    QuickPickOptions,
-    window
-
- } from 'vscode';
- import {
-     row,
-     col,
-     choice,
-     pipe,
-     radio,
-     checkbox,
-     float,
-     number,
-     select,
-     text,
-     textarea,
-     strip
- } from './processSelection';
+    commands
+} from 'vscode';
+import * as ezfv from './processSelection';
+import InsertNums from './insert_nums'
 
 
 export function activate(context: ExtensionContext) {
     
     const actions = [
-        ['extension.ezfvRow',      row],
-        ['extension.ezfvCol',      col],
-        ['extension.ezfvChoice',   choice],
-        ['extension.ezfvPipe',     pipe],
-        ['extension.ezfvRadio',    radio],
-        ['extension.ezfvCheckbox', checkbox],
-        ['extension.ezfvFloat',    float],
-        ['extension.ezfvNumber',   number],
-        ['extension.ezfvSelect',   select],
-        ['extension.ezfvText',     text],
-        ['extension.ezfvTextarea', textarea],
-        ['extension.ezfvStrip',    strip],
+        ['extension.ezfvRow',        ezfv.row],
+        ['extension.ezfvCol',        ezfv.col],
+        ['extension.ezfvChoice',     ezfv.choice],
+        ['extension.ezfvPipe',       ezfv.pipe],
+        ['extension.ezfvRadio',      ezfv.radio],
+        ['extension.ezfvCheckbox',   ezfv.checkbox],
+        ['extension.ezfvFloat',      ezfv.float],
+        ['extension.ezfvNumber',     ezfv.number],
+        ['extension.ezfvSelect',     ezfv.select],
+        ['extension.ezfvText',       ezfv.text],
+        ['extension.ezfvTextarea',   ezfv.textarea],
+        ['extension.ezfvStrip',      ezfv.strip],
+        ['extension.ezfvInsertNums', InsertNums],
     ];
 
     const subs = actions.map((pair: [string, any]): any => {

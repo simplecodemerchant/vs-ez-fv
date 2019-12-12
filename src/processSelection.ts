@@ -1,57 +1,36 @@
 
-import { 
-    ExtensionContext,
-    commands,
-    Position,
-    Selection,
-    TextEditor,
-    TextDocument,
+import {
     Range,
-    QuickPickItem,
-    QuickPickOptions,
-    window
-
- } from 'vscode';
+} from 'vscode';
 import CleanText from './helpers/clean_text';
 import * as Components from './components';
 import OneOffPointer from './helpers/one_offs/one_offs';
+import Window from './helpers/window'
+
+const {
+    editor: e,
+    document: d,
+    selections: sels,
+    window,
+} = Window();
 
 
 function processSelection( task ) {
-    const e =   window.activeTextEditor;
-    const d =   e.document;
-    const sel = e.selections;
-    // let replaceRanges: Selection[] = e.selections;
-
+    
 	e.edit( function ( edit ) {
-        
-		for ( let x = 0; x < sel.length; x++ ) {
-			let txt: string = CleanText( d.getText( new Range( sel[x].start, sel[x].end ) ) ).trim();
 
-            if ( txt.length > 0 ){
-                txt = task.run( x, txt );
+        sels.forEach((sel) => {
+            let txt: string = CleanText( d.getText( new Range( sel.start, sel.end ) ) ).trim();
 
-                if ( txt ){
-	                // replaceRanges = [];
-			        edit.replace( sel[x], txt );
-                }
-                else{
-                    window.showInformationMessage('Looks like something went wrong');
-                    return;
-                }
+            txt = task.run( txt );
 
+            if ( txt.length ) {
+                return edit.replace( sel, txt );
+            } else {
+                return window.showInformationMessage('Looks like something went wrong');
             }
-            
-
-			// let startPos: Position = new Position(sel[x].start.line, sel[x].start.character);
-			// let endPos: Position = new Position(sel[x].start.line + txt.split(/\r\n|\r|\n/).length - 1, sel[x].start.character + txt.length);
-
-			// replaceRanges.push(new Selection(startPos, endPos));
-		}
-	});
-
-	// e.selections = replaceRanges;
-
+        })
+	})
 }
 
 export const row =      () => processSelection(new Components.CellConstructor( 'row' ));

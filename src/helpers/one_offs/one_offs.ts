@@ -16,7 +16,7 @@ export default class OneOffPointer{
         this.func = this.func_list[type];
     }
 
-    run(idx, input){
+    run(input){
         return this.func(input);
     }
     

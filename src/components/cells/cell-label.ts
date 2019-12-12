@@ -16,7 +16,7 @@ function matchArray( arr, reg ){
 
 }
 
-export default function CellLabelConstructor(label, idx, input){
+export default function CellLabelConstructor(label, input){
     let matches;
     const input_rows = input.split(/\r\n|\r|\n/);
 
