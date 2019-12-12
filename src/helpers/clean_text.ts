@@ -1,7 +1,6 @@
-export default function CleanText(input){
-    let text = input;
-
-    text = text.replace(/\n{2,}/g, '\n');
+export default function CleanText(input: string){
+    
+    let text = input.replace(/\n{2,}/g, '\n');
 
     // replace(u"\u2019", "'").
     // replace(u"\u2018", "'").

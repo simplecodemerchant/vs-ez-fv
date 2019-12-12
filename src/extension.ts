@@ -8,7 +8,7 @@ import InsertNums from './insert_nums'
 
 export function activate(context: ExtensionContext) {
     
-    const actions = [
+    const actions: readonly [string, () => any][] = [
         ['extension.ezfvRow',        ezfv.row],
         ['extension.ezfvCol',        ezfv.col],
         ['extension.ezfvChoice',     ezfv.choice],
@@ -24,11 +24,11 @@ export function activate(context: ExtensionContext) {
         ['extension.ezfvInsertNums', InsertNums],
     ];
 
-    const subs = actions.map((pair: [string, any]): any => {
+    const subs = actions.map((pair): any => {
 
         const [name, func] = pair;
 
-        return commands.registerCommand(name, func);
+        return commands.registerCommand(...pair);
 
     });
 

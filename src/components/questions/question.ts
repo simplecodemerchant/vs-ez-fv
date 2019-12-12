@@ -7,11 +7,11 @@ export default class QuestionConstructor {
     extra:string = '';
     comment:string = '';
 
-    constructor (type){
+    constructor (type: string){
         this.type = type;
     }
 
-    run ( input ){
+    run ( input: string ){
         const question = QuestionLabelConstructor(input);
 
         if ( !question ){ return false; }

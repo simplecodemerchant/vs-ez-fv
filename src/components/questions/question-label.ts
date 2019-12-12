@@ -1,6 +1,6 @@
 
 
-export default function QuestionLabelConstructor(input){
+export default function QuestionLabelConstructor(input: string){
     
     const search_for_cells = /<row|<col|<choice|<style|<group|<net|<exec|<validate|\@([^c][^\s]*)/;
     const search_for_comment = /\@c\s*/;
@@ -14,9 +14,9 @@ export default function QuestionLabelConstructor(input){
     let question_cells = input.substr( beginning_cells );
     question = question.trim().replace(/[\n\r]{1,}/g, '\n<br/><br/>\n');
     
-    question = question.split(search_for_comment);
+    const question_list = question.split(search_for_comment);
     
-    let question_comment = question.slice(1)[0];
+    let question_comment = question_list.slice(1)[0];
     question = question.slice(0)[0];
 
 
