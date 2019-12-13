@@ -42,12 +42,16 @@ export default class QuestionConstructor {
                 break;
             case 'radio':
                 this.comment = 'Please select one';
-                if ( ( question.question_cells.indexOf('<row') !== -1 ) && ( question.question_cells.search(/<col|<choice/) !== -1 ) ){
+                if ( ( question.question_cells.search(/<row/) !== -1 ) && ( question.question_cells.search(/<col|<choice/) !== -1 ) ){
                     this.comment = 'Please select one in each row';                    
                 } 
                 break;
             case 'select':
                 this.extra = ' optional="0"';
+                this.comment = 'Please select one';
+                if ( ( question.question_cells.search(/<row/) !== -1 ) && ( question.question_cells.search(/<choice/) !== -1 ) ){
+                    this.comment = 'Please select one in each row';                    
+                } 
                 break;
             case 'text':
                 this.extra = ' size="40" optional="0"';
@@ -64,12 +68,14 @@ export default class QuestionConstructor {
         if ( question.question_comment ){
             this.comment = question.question_comment.trim().replace(/^\(/g, '').replace(/[\)\.]*\s*$/g, '');
         }
-            this.comment =  `<comment>${this.comment}</comment>`;
+
+        if (this.comment !== ''){
+            this.comment =  `\n  <comment>${this.comment}</comment>`;
+        }    
 
         let question_constructed = 
 `<${this.type} label="${question.question_label}"${this.extra}>
-  <title>${question.question_text}</title>
-  ${this.comment}
+  <title>${question.question_text}</title>${this.comment}
   ${question.question_cells}
 </${this.type}>`;
 
