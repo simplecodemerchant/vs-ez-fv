@@ -17,9 +17,9 @@ function processSelection( task: any ) {
     
     if (editor && selections && document){
         editor.edit(( edit ) => {
-
             selections.forEach((sel) => {
-                let txt: string = CleanText( document.getText( new Range( sel.start, sel.end ) ) ).trim();
+                const doc_txt: string = document.getText( new Range( sel.start, sel.end ))
+                let txt: string = CleanText( doc_txt ).trim()
 
                 txt = task.run( txt );
 
@@ -28,6 +28,7 @@ function processSelection( task: any ) {
                 } else {
                     return window.showInformationMessage('Looks like something went wrong');
                 }
+
             })
         })
     }

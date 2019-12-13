@@ -31,10 +31,11 @@ export default class CellConstructor{
             default:
                 break;
         }
-
+        
         let constructed_cells: Match[] = CellLabelConstructor( this.prelabel, input );
 
         if ( this.type === 'case' ) { constructed_cells.push({label: 'c999', content: 'BAD PIPE'}) }
+        
 
         let cells = constructed_cells.map( ({label, content}: Match, idx): string => {
         
@@ -47,6 +48,7 @@ export default class CellConstructor{
 
             return `  <${this.type} label="${label}"${this.extra}>${content.trim()}</${this.type}>`
         });
+        
 
     return cells.join('\n')
     }

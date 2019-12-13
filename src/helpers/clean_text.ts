@@ -8,6 +8,6 @@ export default function CleanText(input: string){
     // replace(u"\u201D", "\"").
     // replace(u"\u2014", '&amp;mdash;').replace(u"\u2013", '&amp;ndash;')
     // re.sub('&\s', '&amp; ',input)
-
+    
     return text;
 }
