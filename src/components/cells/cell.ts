@@ -43,7 +43,7 @@ export default class CellConstructor{
                 this.extra = ' open="1" openSize="25" randomize="0"'
             }
             if ( this.type === 'case'){
-                this.extra = ( (idx+1) === cells.length ) ? ' cond="1"' : ' cond=""'
+                this.extra = ( (idx+1) === constructed_cells.length ) ? ' cond="1"' : ' cond=""'
             }
 
             return `  <${this.type} label="${label}"${this.extra}>${content.trim()}</${this.type}>`
