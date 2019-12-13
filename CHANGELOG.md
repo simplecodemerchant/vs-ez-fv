@@ -1,7 +1,15 @@
 # Change Log
-All notable changes to the "ezfv" extension will be documented in this file.
+All notable changes to this project will be documented in this file.
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+## [0.2.0]
+### Added
+- Insert numbers( or letters) in order at each cursor
 
-## [Unreleased]
-- Initial release
+### Updated
+- Updated workflow for easier development
+- More specific Typing
+
+### Fixes
+- Fixed an issue where cells were not being constructed
+- Pipes should now work
+- Fixed an issue where question labels were stripped of numbers
