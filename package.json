@@ -23,7 +23,7 @@
         "onLanguage:xml",
         "onLanguage:plaintext"
     ],
-    "main": "./out/extension",
+    "main": "./dist/extension",
     "contributes": {
         "commands": [
             {
@@ -137,11 +137,17 @@
         ]
     },
     "scripts": {
-        "vscode:prepublish": "tsc -p ./",
-        "compileold": "tsc -watch -p ./",
-        "compile": "webpack --mode development",
-        "postinstall": "node ./node_modules/vscode/bin/install",
-        "test": "node ./node_modules/vscode/bin/test"
+        "old_vscode:prepublish": "tsc -p ./",
+        "old_compileold": "tsc -watch -p ./",
+        "old_compile": "webpack --mode development",
+        "old_postinstall": "node ./node_modules/vscode/bin/install",
+        "old_test": "node ./node_modules/vscode/bin/test",
+        
+        "vscode:prepublish": "webpack --mode production",
+		"webpack": "webpack --mode development",
+		"webpack-dev": "webpack --mode development --watch",
+		"test-compile": "tsc -p ./",
+		"lint": "tslint -p ./"
     },
     "devDependencies": {
         "@types/mocha": "^2.2.32",

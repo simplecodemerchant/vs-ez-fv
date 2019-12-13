@@ -1,23 +1,23 @@
-import CellLabelConstructor from './cell-label';
+import CellLabelConstructor, { Match } from './cell-label';
 
 type CellType = 'row' | 'col' | 'choice' | 'case'
 
 export default class CellConstructor{
-    type:CellType ;
-    extra:string = "";
-    prelabel:string;
-    extraCheck:RegExp;
+    type:CellType
+    extra:string = ''
+    prelabel:string = ''
+    extraCheck:RegExp | undefined = undefined
 
-    constructor(type){
-        this.type = type;
+    constructor(type: CellType){
+        this.type = type
     }
 
-    run(idx, input){
+    run(input: string){
 
         switch(this.type){
             case 'row':
                 this.prelabel = 'r'
-                this.extraCheck = /(other.*?specify)/i;
+                this.extraCheck = /(other.*?specify)/i
                 break;
             case 'col':
                 this.prelabel = 'c'
@@ -31,23 +31,25 @@ export default class CellConstructor{
             default:
                 break;
         }
-
-        let cells = CellLabelConstructor( this.prelabel, idx, input );
-
-        if ( this.type === 'case' ) { cells.push({label: 'c999', content: 'BAD PIPE'}) }
-
-        cells = cells.map( ({label, content}, idx) => {
         
-            if ( this.type === 'row' && this.extraCheck.test(content) ){
+        let constructed_cells: Match[] = CellLabelConstructor( this.prelabel, input );
+
+        if ( this.type === 'case' ) { constructed_cells.push({label: 'c999', content: 'BAD PIPE'}) }
+        
+
+        let cells = constructed_cells.map( ({label, content}: Match, idx): string => {
+        
+            if ( this.type === 'row' && this.extraCheck && this.extraCheck.test(content) ){
                 this.extra = ' open="1" openSize="25" randomize="0"'
             }
             if ( this.type === 'case'){
-                this.extra = ( (idx+1) === cells.length ) ? ' cond="1"' : ' cond=""';
+                this.extra = ( (idx+1) === constructed_cells.length ) ? ' cond="1"' : ' cond=""'
             }
 
             return `  <${this.type} label="${label}"${this.extra}>${content.trim()}</${this.type}>`
         });
+        
 
-    return cells.join('\n');
+    return cells.join('\n')
     }
 }

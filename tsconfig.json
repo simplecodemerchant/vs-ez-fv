@@ -1,17 +1,32 @@
+// {
+//     "compilerOptions": {
+//         "module": "commonjs",
+//         "target": "es6",
+//         "outDir": "out",
+//         "lib": ["es6"],
+//         "sourceMap": true,
+//         "rootDir": ".",
+//         "alwaysStrict": true
+//     },
+//     "exclude": [
+//         "node_modules",
+//         ".vscode-test"
+//     ]
+// }
+ 
 {
-    "compilerOptions": {
-        "module": "commonjs",
-        "target": "es6",
-        "outDir": "out",
-        "lib": [
-            "es6"
-        ],
-        "sourceMap": true,
-        "rootDir": ".",
-        "alwaysStrict": true
-    },
-    "exclude": [
-        "node_modules",
-        ".vscode-test"
-    ]
+	"compilerOptions": {
+		"module": "commonjs",
+		"target": "es6",
+		"outDir": "out",
+		"sourceMap": true,
+		"strict": true,
+		"rootDir": "src",
+		"lib": ["es6"]
+	},
+	"include": [
+		"src/**/*.ts",
+		"./node_modules/vscode/vscode.d.ts",
+		"./node_modules/vscode/lib/*",
+	]
 }
