@@ -140,8 +140,10 @@
         "vscode:prepublish": "webpack --mode production",
 		"webpack": "webpack --mode development",
 		"webpack-dev": "webpack --mode development --watch",
+		"webpack-tests": "webpack --mode=production --config=webpack.config.tests.js",
 		"test-compile": "tsc -p ./",
-		"lint": "tslint -p ./"
+        "lint": "tslint -p ./",
+        "test": "mocha"
     },
     "devDependencies": {
         "@types/mocha": "^2.2.32",

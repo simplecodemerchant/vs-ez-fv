@@ -1,5 +1,5 @@
 {
-    "version": "2.0.0",
+    "version": "0.2.0",
     "configurations": [
         {
             "name": "Launch Extension",
@@ -13,18 +13,20 @@
             "preLaunchTask": "npm: webpack"
         },
         {
-            "name": "Extension Tests",
-            "type": "extensionHost",
+            "name": "Mocha Tests",
+            "type": "node",
             "request": "launch",
-            "runtimeExecutable": "${execPath}",
+            "program": "${workspaceFolder}/node_modules/mocha/bin/mocha",
+            "cwd": "${workspaceFolder}",
             "args": [
-                "--extensionDevelopmentPath=${workspaceFolder}",
-                "--extensionTestsPath=${workspaceFolder}/out/test"
+                "${workspaceFolder}/dist_test/tests.js",
+                "--colors"
             ],
             "outFiles": [
-                "${workspaceFolder}/out/test/**/*.js"
+                "${workspaceFolder}/dist_test/**/*.js"
             ],
-            "preLaunchTask": "npm: test-compile"
+            "console": "integratedTerminal",
+            "preLaunchTask": "npm: webpack-tests"
         }
     ]
 }
