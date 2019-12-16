@@ -1,6 +1,14 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [0.3.1]
+### Fixes
+- Added `<suspend/>` to the end of questions
+
+### Update
+- Readme
+- Tests
+
 ## [0.3.0]
 ### Added 
 - Tests for all functions
