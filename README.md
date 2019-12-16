@@ -4,7 +4,7 @@ Shortcuts
 =========
 <br/>
 
-Cells
+### Cells
 _____
 
 Each of the cell shortcuts are given this string:
@@ -52,7 +52,7 @@ Each of the cell shortcuts are given this string:
 ```
 <br/>
 
-Questions
+### Questions
 _____
 
 Questions below are given this text:
@@ -151,6 +151,6 @@ Q1 This is question text
 ```
 <br/>
 
-Snippets
+### Snippets
 _____
 **alt + s** - Displays valid snippets for current file type
