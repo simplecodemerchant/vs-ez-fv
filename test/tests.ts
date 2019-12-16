@@ -91,7 +91,8 @@ describe('Make Radio Question', function(){
   <row label="r1">1</row>
   <row label="r2">2</row>
   <row label="r3">3</row>
-</radio>`
+</radio>
+<suspend/>`
 
     it('should return a radio question given a label, question text, and cells', function(){
         assert.equal(Radio.run(RadioText), RadioTextCorrect)
@@ -115,7 +116,8 @@ new line</title>
   <row label="r1">1</row>
   <row label="r2">2</row>
   <row label="r3">3</row>
-</radio>`
+</radio>
+<suspend/>`
 
     it('should return a radio question and comment if @c is specified ', function(){
         assert.equal(Radio.run(RadioText), RadioTextCorrect)
@@ -140,7 +142,8 @@ describe('Make Checkbox Question', function(){
   <row label="r1">1</row>
   <row label="r2">2</row>
   <row label="r3">3</row>
-</checkbox>`
+</checkbox>
+<suspend/>`
 
     it('should return a checkbox question given a label, question text, and cells', function(){
         const Checkbox = new Components.QuestionConstructor('checkbox')
@@ -160,7 +163,8 @@ describe('Make Checkbox Question', function(){
   <row label="r1">1</row>
   <row label="r2">2</row>
   <row label="r99" exclusive="1" randomize="0">Don't know</row>
-</checkbox>`
+</checkbox>
+<suspend/>`
 
     it(`should include exclusive row if Don't know, etc. is in row`, function(){
         const Checkbox = new Components.QuestionConstructor('checkbox')
@@ -195,7 +199,8 @@ describe('Make Select Question', function(){
   <row label="r1">1</row>
   <row label="r2">2</row>
   <row label="r3">3</row>
-</select>`
+</select>
+<suspend/>`
 
     it('should return a select question given a label, question text, and cells', function(){
         assert.equal(Checkbox.run(SelectText), SelectTextCorrect)
@@ -274,7 +279,8 @@ describe('Make Float', function(){
   <row label="r1">1</row>
   <row label="r2">2</row>
   <row label="r3">3</row>
-</float>`
+</float>
+<suspend/>`
 
     it('should make float if given label, question text, and cells', function(){
         const Float = new Components.QuestionConstructor('float')
@@ -292,7 +298,8 @@ describe('Make Number', function(){
     let NumberTextCorrect = 
 `<number label="Q1" size="6" optional="0">
   <title>Number Text</title>
-</number>`
+</number>
+<suspend/>`
 
     it('should make number if given label, question text', function(){
         const Number = new Components.QuestionConstructor('number')
@@ -314,7 +321,8 @@ describe('Make Number', function(){
   <row label="r1">1</row>
   <row label="r2">2</row>
   <row label="r3">3</row>
-</number>`
+</number>
+<suspend/>`
 
     it('should make number if given label, question text, and cells', function(){
         const Number = new Components.QuestionConstructor('number')
@@ -333,7 +341,8 @@ describe('Make Text', function(){
 `<text label="Q1" size="40" optional="0">
   <title>Text Text</title>
   <comment>Please be as specific as possible</comment>
-</text>`
+</text>
+<suspend/>`
 
     it('should make Text if given label, question text', function(){
         const Text = new Components.QuestionConstructor('text')
@@ -355,7 +364,8 @@ describe('Make Text', function(){
   <row label="r1">1</row>
   <row label="r2">2</row>
   <row label="r3">3</row>
-</text>`
+</text>
+<suspend/>`
 
     it('should make Text if given label, question text, and cells', function(){
         const Text = new Components.QuestionConstructor('text')
@@ -375,7 +385,8 @@ describe('Make TextArea', function(){
 `<textarea label="Q1" optional="0">
   <title>TextArea Text</title>
   <comment>Please be as specific as possible</comment>
-</textarea>`
+</textarea>
+<suspend/>`
 
     it('should make Text if given label, question text', function(){
         const TextArea = new Components.QuestionConstructor('textarea')
@@ -397,7 +408,8 @@ describe('Make TextArea', function(){
   <row label="r1">1</row>
   <row label="r2">2</row>
   <row label="r3">3</row>
-</textarea>`
+</textarea>
+<suspend/>`
 
     it('should make Text if given label, question text, and cells', function(){
         const TextArea = new Components.QuestionConstructor('textarea')
