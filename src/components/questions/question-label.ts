@@ -11,7 +11,7 @@ export default function QuestionLabelConstructor(input: string){
 
     let question = input.substr( 0, beginning_cells )
 
-    let question_cells = input.substr( beginning_cells )
+    let question_cells = input.substr( beginning_cells ).trim()
     
     const question_list = question.split(search_for_comment)
     

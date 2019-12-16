@@ -126,7 +126,6 @@ new line</title>
 // Checkbox Tests
 describe('Make Checkbox Question', function(){
 
-    const Checkbox = new Components.QuestionConstructor('checkbox')
 
     let CheckboxText = 
 `Q1 Checkbox question
@@ -144,6 +143,27 @@ describe('Make Checkbox Question', function(){
 </checkbox>`
 
     it('should return a checkbox question given a label, question text, and cells', function(){
+        const Checkbox = new Components.QuestionConstructor('checkbox')
+        assert.equal(Checkbox.run(CheckboxText), CheckboxTextCorrect)
+    })
+
+    CheckboxText = 
+`Q1 Checkbox question
+  <row label="r1">1</row>
+  <row label="r2">2</row>
+  <row label="r99">Don't know</row>`
+        
+    CheckboxTextCorrect = 
+`<checkbox label="Q1" atleast="1">
+  <title>Checkbox question</title>
+  <comment>Please select all that apply</comment>
+  <row label="r1">1</row>
+  <row label="r2">2</row>
+  <row label="r99" exclusive="1" randomize="0">Don't know</row>
+</checkbox>`
+
+    it(`should include exclusive row if Don't know, etc. is in row`, function(){
+        const Checkbox = new Components.QuestionConstructor('checkbox')
         assert.equal(Checkbox.run(CheckboxText), CheckboxTextCorrect)
     })
 })
@@ -239,5 +259,149 @@ describe('Make Float', function(){
         const Float = new Components.QuestionConstructor('float')
 
         assert.equal(Float.run(FloatText), FloatTextCorrect)
+    })
+
+    FloatText = 
+`Q1 Float Text
+  <row label="r1">1</row>
+  <row label="r2">2</row>
+  <row label="r3">3</row>
+  `
+    
+        FloatTextCorrect = 
+`<float label="Q1" size="6" optional="0">
+  <title>Float Text</title>
+  <row label="r1">1</row>
+  <row label="r2">2</row>
+  <row label="r3">3</row>
+</float>`
+
+    it('should make float if given label, question text, and cells', function(){
+        const Float = new Components.QuestionConstructor('float')
+
+        assert.equal(Float.run(FloatText), FloatTextCorrect)
+    })
+})
+
+// Number Tests
+describe('Make Number', function(){
+        
+    let NumberText = 
+`Q1 Number Text`
+
+    let NumberTextCorrect = 
+`<number label="Q1" size="6" optional="0">
+  <title>Number Text</title>
+</number>`
+
+    it('should make number if given label, question text', function(){
+        const Number = new Components.QuestionConstructor('number')
+
+        assert.equal(Number.run(NumberText), NumberTextCorrect)
+    })
+
+    NumberText = 
+`Q1 Number Text
+  <row label="r1">1</row>
+  <row label="r2">2</row>
+  <row label="r3">3</row>
+  `
+    
+    NumberTextCorrect = 
+`<number label="Q1" size="6" optional="0">
+  <title>Number Text</title>
+  <comment>Please enter a whole number</comment>
+  <row label="r1">1</row>
+  <row label="r2">2</row>
+  <row label="r3">3</row>
+</number>`
+
+    it('should make number if given label, question text, and cells', function(){
+        const Number = new Components.QuestionConstructor('number')
+
+        assert.equal(Number.run(NumberText), NumberTextCorrect)
+    })
+})
+
+// Text Tests
+describe('Make Text', function(){
+        
+    let TextText = 
+`Q1 Text Text`
+
+    let TextTextCorrect = 
+`<text label="Q1" size="40" optional="0">
+  <title>Text Text</title>
+  <comment>Please be as specific as possible</comment>
+</text>`
+
+    it('should make Text if given label, question text', function(){
+        const Text = new Components.QuestionConstructor('text')
+
+        assert.equal(Text.run(TextText), TextTextCorrect)
+    })
+
+    TextText = 
+`Q1 Text Text
+  <row label="r1">1</row>
+  <row label="r2">2</row>
+  <row label="r3">3</row>
+  `
+    
+    TextTextCorrect = 
+`<text label="Q1" size="40" optional="0">
+  <title>Text Text</title>
+  <comment>Please be as specific as possible</comment>
+  <row label="r1">1</row>
+  <row label="r2">2</row>
+  <row label="r3">3</row>
+</text>`
+
+    it('should make Text if given label, question text, and cells', function(){
+        const Text = new Components.QuestionConstructor('text')
+
+        assert.equal(Text.run(TextText), TextTextCorrect)
+    })
+})
+
+
+// TextArea Tests
+describe('Make TextArea', function(){
+        
+    let TextAreaText = 
+`Q1 TextArea Text`
+
+    let TextAreaTextCorrect = 
+`<textarea label="Q1" optional="0">
+  <title>TextArea Text</title>
+  <comment>Please be as specific as possible</comment>
+</textarea>`
+
+    it('should make Text if given label, question text', function(){
+        const TextArea = new Components.QuestionConstructor('textarea')
+
+        assert.equal(TextArea.run(TextAreaText), TextAreaTextCorrect)
+    })
+
+    TextAreaText = 
+`Q1 TextArea Text
+  <row label="r1">1</row>
+  <row label="r2">2</row>
+  <row label="r3">3</row>
+  `
+    
+    TextAreaTextCorrect = 
+`<textarea label="Q1" optional="0">
+  <title>TextArea Text</title>
+  <comment>Please be as specific as possible</comment>
+  <row label="r1">1</row>
+  <row label="r2">2</row>
+  <row label="r3">3</row>
+</textarea>`
+
+    it('should make Text if given label, question text, and cells', function(){
+        const TextArea = new Components.QuestionConstructor('textarea')
+
+        assert.equal(TextArea.run(TextAreaText), TextAreaTextCorrect)
     })
 })

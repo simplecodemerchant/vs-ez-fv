@@ -71,7 +71,7 @@ export default class QuestionConstructor {
 
         if (this.comment !== ''){
             this.comment =  `\n  <comment>${this.comment}</comment>`;
-        }    
+        }
 
         let question_constructed = 
 `<${this.type} label="${question.question_label}"${this.extra}>
