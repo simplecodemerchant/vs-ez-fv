@@ -1,7 +1,14 @@
 
 export default function StripTag(input: string) {
-    const find_label = /(<.*? label=".*?"[^>]*>)([^]*?)(<\/.*?>)/ig;
+    const find_text = /<.*? label=".*?"[^>]*>([^<]*)<\/.*?>/g
 
-    return input.replace(/(\s*<.*? label=".*?"[^>]*>)([^]*?)(<\/.*?>\s*)/ig, "$2\n");
+    let matchArry: string[] = []
+    let match: RegExpExecArray|null
+
+    while(match = find_text.exec(input)){
+        matchArry.push(match[1])
+    }
+
+    return matchArry.join('\n')
 
 }
