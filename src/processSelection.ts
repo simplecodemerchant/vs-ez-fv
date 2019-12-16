@@ -52,3 +52,4 @@ export const number =   () => processSelection(new Components.QuestionConstructo
 export const select =   () => processSelection(new Components.QuestionConstructor( 'select' ))
 export const text =     () => processSelection(new Components.QuestionConstructor( 'text' ))
 export const textarea = () => processSelection(new Components.QuestionConstructor( 'textarea' ))
+export const survey =   () => processSelection(Components.Survey)

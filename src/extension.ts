@@ -9,10 +9,13 @@ import InsertNums from './insert_nums'
 export function activate(context: ExtensionContext) {
     
     const actions: readonly [string, () => any][] = [
+        // Cells
         ['extension.ezfvRow',        ezfv.row],
         ['extension.ezfvCol',        ezfv.col],
         ['extension.ezfvChoice',     ezfv.choice],
         ['extension.ezfvPipe',       ezfv.pipe],
+
+        // Questions
         ['extension.ezfvRadio',      ezfv.radio],
         ['extension.ezfvCheckbox',   ezfv.checkbox],
         ['extension.ezfvFloat',      ezfv.float],
@@ -21,6 +24,11 @@ export function activate(context: ExtensionContext) {
         ['extension.ezfvText',       ezfv.text],
         ['extension.ezfvTextarea',   ezfv.textarea],
         ['extension.ezfvStrip',      ezfv.strip],
+
+        // Structures
+        ['extension.ezfvSurvey',     ezfv.survey],
+
+        // Utilities
         ['extension.ezfvInsertNums', InsertNums],
     ];
 

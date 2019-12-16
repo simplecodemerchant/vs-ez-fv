@@ -85,7 +85,8 @@ describe('Make Radio Question', function(){
   <row label="r3">3</row>`
     
     let RadioTextCorrect = 
-`<radio label="Q1">
+`<radio
+  label="Q1">
   <title>Radio question</title>
   <comment>Please select one</comment>
   <row label="r1">1</row>
@@ -108,7 +109,8 @@ new line
   <row label="r3">3</row>`
     
     RadioTextCorrect = 
-`<radio label="Q1">
+`<radio
+  label="Q1">
   <title>Radio question
 <br/><br/>
 new line</title>
@@ -136,7 +138,9 @@ describe('Make Checkbox Question', function(){
   <row label="r3">3</row>`
     
     let CheckboxTextCorrect = 
-`<checkbox label="Q1" atleast="1">
+`<checkbox
+  label="Q1"
+  atleast="1">
   <title>Checkbox question</title>
   <comment>Please select all that apply</comment>
   <row label="r1">1</row>
@@ -157,7 +161,9 @@ describe('Make Checkbox Question', function(){
   <row label="r99">Don't know</row>`
         
     CheckboxTextCorrect = 
-`<checkbox label="Q1" atleast="1">
+`<checkbox
+  label="Q1"
+  atleast="1">
   <title>Checkbox question</title>
   <comment>Please select all that apply</comment>
   <row label="r1">1</row>
@@ -189,7 +195,9 @@ describe('Make Select Question', function(){
   <row label="r3">3</row>`
     
     let SelectTextCorrect = 
-`<select label="Q1" optional="0">
+`<select
+  label="Q1"
+  optional="0">
   <title>Select question</title>
   <comment>Please select one in each row</comment>
   <choice label="ch1">Cell 1</choice>
@@ -256,7 +264,10 @@ describe('Make Float', function(){
 `Q1 Float Text`
 
     let FloatTextCorrect = 
-`<float label="Q1" size="6" optional="0">
+`<float
+  label="Q1"
+  size="6"
+  optional="0">
   <title>Float Text</title>
 </float>`
 
@@ -274,7 +285,10 @@ describe('Make Float', function(){
   `
     
         FloatTextCorrect = 
-`<float label="Q1" size="6" optional="0">
+`<float
+  label="Q1"
+  size="6"
+  optional="0">
   <title>Float Text</title>
   <row label="r1">1</row>
   <row label="r2">2</row>
@@ -296,7 +310,10 @@ describe('Make Number', function(){
 `Q1 Number Text`
 
     let NumberTextCorrect = 
-`<number label="Q1" size="6" optional="0">
+`<number
+  label="Q1"
+  size="6"
+  optional="0">
   <title>Number Text</title>
 </number>
 <suspend/>`
@@ -315,7 +332,10 @@ describe('Make Number', function(){
   `
     
     NumberTextCorrect = 
-`<number label="Q1" size="6" optional="0">
+`<number
+  label="Q1"
+  size="6"
+  optional="0">
   <title>Number Text</title>
   <comment>Please enter a whole number</comment>
   <row label="r1">1</row>
@@ -338,7 +358,10 @@ describe('Make Text', function(){
 `Q1 Text Text`
 
     let TextTextCorrect = 
-`<text label="Q1" size="40" optional="0">
+`<text
+  label="Q1"
+  size="40"
+  optional="0">
   <title>Text Text</title>
   <comment>Please be as specific as possible</comment>
 </text>
@@ -358,7 +381,10 @@ describe('Make Text', function(){
   `
     
     TextTextCorrect = 
-`<text label="Q1" size="40" optional="0">
+`<text
+  label="Q1"
+  size="40"
+  optional="0">
   <title>Text Text</title>
   <comment>Please be as specific as possible</comment>
   <row label="r1">1</row>
@@ -382,7 +408,9 @@ describe('Make TextArea', function(){
 `Q1 TextArea Text`
 
     let TextAreaTextCorrect = 
-`<textarea label="Q1" optional="0">
+`<textarea
+  label="Q1"
+  optional="0">
   <title>TextArea Text</title>
   <comment>Please be as specific as possible</comment>
 </textarea>
@@ -402,7 +430,9 @@ describe('Make TextArea', function(){
   `
     
     TextAreaTextCorrect = 
-`<textarea label="Q1" optional="0">
+`<textarea
+  label="Q1"
+  optional="0">
   <title>TextArea Text</title>
   <comment>Please be as specific as possible</comment>
   <row label="r1">1</row>

@@ -77,6 +77,10 @@
             {
                 "command": "extension.ezfvInsertNums",
                 "title": "ez::insert nums"
+            },
+            {
+                "command": "extension.ezfvSurvey",
+                "title": "ez::Survey"
             }
         ],
         "keybindings": [
@@ -98,7 +102,7 @@
             },
             {
                 "command": "extension.ezfvRadio",
-                "key": "Ctrl+Shift+r"
+                "key": "Ctrl+r"
             },
             {
                 "command": "extension.ezfvCheckbox",
