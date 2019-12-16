@@ -1,6 +1,14 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [0.3.0]
+### Added 
+- Tests for all functions
+
+### Fixes
+- Fixed the regex on the tag strip function
+- Updated the spacing for questions without rows
+
 ## [0.2.0]
 ### Added
 - Insert numbers( or letters) in order at each cursor
