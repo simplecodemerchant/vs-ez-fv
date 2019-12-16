@@ -3,7 +3,7 @@ import QuestionLabelConstructor from './question-label';
 
 
 export default class QuestionConstructor {
-    type:string;
+    public type:string;
     extra:string = '';
     comment:string = '';
 

@@ -3,7 +3,7 @@ import CellLabelConstructor, { Match } from './cell-label';
 type CellType = 'row' | 'col' | 'choice' | 'case'
 
 export default class CellConstructor{
-    type:CellType
+    public type:CellType
     extra:string = ''
     prelabel:string = ''
     extraCheck:RegExp | undefined = undefined
