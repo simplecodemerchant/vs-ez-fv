@@ -75,8 +75,7 @@ export default class QuestionConstructor {
 
         let question_constructed = 
 `<${this.type} label="${question.question_label}"${this.extra}>
-  <title>${question.question_text}</title>${this.comment}
-  ${question.question_cells}
+  <title>${question.question_text}</title>${this.comment}${question.question_cells ? '\n  ': ''}${question.question_cells}
 </${this.type}>`;
 
         return question_constructed;

@@ -223,3 +223,21 @@ describe('Strip tags', function(){
         assert.equal(Strip.run(StripText), StripTextCorrect)
     })
 })
+
+// Float tests
+describe('Make Float', function(){
+    
+    let FloatText = 
+`Q1 Float Text`
+
+    let FloatTextCorrect = 
+`<float label="Q1" size="6" optional="0">
+  <title>Float Text</title>
+</float>`
+
+    it('should make float if given label, question text', function(){
+        const Float = new Components.QuestionConstructor('float')
+
+        assert.equal(Float.run(FloatText), FloatTextCorrect)
+    })
+})
