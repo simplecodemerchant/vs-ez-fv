@@ -1,4 +1,4 @@
-import { Range } from 'vscode'
+import { Range, Selection } from 'vscode'
 import CleanText from './helpers/clean_text'
 import * as Components from './components'
 import OneOffPointer from './helpers/one_offs/one_offs'
@@ -30,6 +30,12 @@ function processSelection( task: any ) {
                 }
 
             })
+        }).then(() => {
+            if (task.type === 'pipe'){
+                const cursor = editor.selection.active
+                const newCursor = cursor.with(cursor.line, 13)
+                editor.selection = new Selection(newCursor, newCursor)
+            }
         })
     }
 }
@@ -38,6 +44,7 @@ export const row =      () => processSelection(new Components.CellConstructor( '
 export const col =      () => processSelection(new Components.CellConstructor( 'col' ))
 export const choice =   () => processSelection(new Components.CellConstructor( 'choice' ))
 export const pipe =     () => processSelection(new OneOffPointer( 'pipe' ))
+export const group =    () => processSelection(new Components.CellConstructor( 'group' ))
 export const strip =    () => processSelection(new OneOffPointer( 'strip' ))
 export const radio =    () => processSelection(new Components.QuestionConstructor( 'radio' ))
 export const checkbox = () => processSelection(new Components.QuestionConstructor( 'checkbox' ))
@@ -46,3 +53,6 @@ export const number =   () => processSelection(new Components.QuestionConstructo
 export const select =   () => processSelection(new Components.QuestionConstructor( 'select' ))
 export const text =     () => processSelection(new Components.QuestionConstructor( 'text' ))
 export const textarea = () => processSelection(new Components.QuestionConstructor( 'textarea' ))
+export const survey =   () => processSelection(Components.Survey)
+export const comment =  () => processSelection(Components.Comment)
+export const switch_cells =  () => processSelection(Components.Switch)

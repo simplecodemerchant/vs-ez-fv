@@ -2,7 +2,7 @@
     "name": "vs-ez-fv",
     "displayName": "EZ-FV",
     "description": "Shortcuts for FocusVision's Decipher platform",
-    "version": "0.3.1",
+    "version": "0.3.3",
     "publisher": "matt92martin",
     "engines": {
         "vscode": "^1.40.0"
@@ -43,6 +43,10 @@
                 "title": "ez::pipe"
             },
             {
+                "command": "extension.ezfvGroup",
+                "title": "ez::group"
+            },
+            {
                 "command": "extension.ezfvRadio",
                 "title": "ez::radio"
             },
@@ -77,6 +81,18 @@
             {
                 "command": "extension.ezfvInsertNums",
                 "title": "ez::insert nums"
+            },
+            {
+                "command": "extension.ezfvSurvey",
+                "title": "ez::survey"
+            },
+            {
+                "command": "extension.ezfvComment",
+                "title": "ez::comment"
+            },
+            {
+                "command": "extension.ezfvSwitch",
+                "title": "ez::switch"
             }
         ],
         "keybindings": [
@@ -97,8 +113,12 @@
                 "key": "Ctrl+4"
             },
             {
+                "command": "extension.ezfvGroup",
+                "key": "Ctrl+5"
+            },
+            {
                 "command": "extension.ezfvRadio",
-                "key": "Ctrl+Shift+r"
+                "key": "Ctrl+r"
             },
             {
                 "command": "extension.ezfvCheckbox",
@@ -125,8 +145,36 @@
                 "key": "Ctrl+Shift+e a"
             },
             {
+                "command": "extension.ezfvComment",
+                "key": "Ctrl+6"
+            },
+            {
                 "key": "Alt+s",
                 "command": "editor.action.insertSnippet"
+            },
+            {
+                "key": "Shift+Alt+b",
+                "command": "editor.action.insertSnippet",
+                "when": "editorTextFocus",
+                "args": {
+                    "snippet": "<b>${0:TM_SELECTED_TEXT}</b>"
+                }
+            },
+            {
+                "key": "Shift+Alt+u",
+                "command": "editor.action.insertSnippet",
+                "when": "editorTextFocus",
+                "args": {
+                    "snippet": "<u>${0:TM_SELECTED_TEXT}</u>"
+                }
+            },
+            {
+                "key": "Shift+Alt+w",
+                "command": "editor.action.insertSnippet",
+                "when": "editorTextFocus",
+                "args": {
+                    "snippet": "<${0:div}>${TM_SELECTED_TEXT}</${0:div}>"
+                }
             }
         ],
         "snippets": [

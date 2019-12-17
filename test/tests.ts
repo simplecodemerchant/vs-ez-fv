@@ -2,6 +2,7 @@ import * as assert from 'assert'
 import '../extensions/string.extension'
 import * as Components from '../src/components'
 import OneOffPointer from '../src/helpers/one_offs/one_offs'
+import Switch from '../src/components/utils/switch'
 
 type CellType = 'row' | 'col' | 'choice' | 'case'
 
@@ -85,7 +86,8 @@ describe('Make Radio Question', function(){
   <row label="r3">3</row>`
     
     let RadioTextCorrect = 
-`<radio label="Q1">
+`<radio
+  label="Q1">
   <title>Radio question</title>
   <comment>Please select one</comment>
   <row label="r1">1</row>
@@ -108,7 +110,8 @@ new line
   <row label="r3">3</row>`
     
     RadioTextCorrect = 
-`<radio label="Q1">
+`<radio
+  label="Q1">
   <title>Radio question
 <br/><br/>
 new line</title>
@@ -120,6 +123,33 @@ new line</title>
 <suspend/>`
 
     it('should return a radio question and comment if @c is specified ', function(){
+        assert.equal(Radio.run(RadioText), RadioTextCorrect)
+    })
+
+    RadioText = 
+`Q1 Radio question
+
+new line
+<comment>This is a comment</comment>
+  <row label="r1">1</row>
+  <row label="r2">2</row>
+  <row label="r3">3</row>`
+    
+    RadioTextCorrect = 
+`<radio
+  label="Q1">
+  <title>Radio question
+<br/><br/>
+new line</title>
+  <comment>This is a comment</comment>
+  <row label="r1">1</row>
+  <row label="r2">2</row>
+  <row label="r3">3</row>
+</radio>
+<suspend/>`
+
+    it('should return a radio question and comment if <comment> is specified ', function(){
+        const Radio = new Components.QuestionConstructor('radio')
         assert.equal(Radio.run(RadioText), RadioTextCorrect)
     })
 })
@@ -136,7 +166,9 @@ describe('Make Checkbox Question', function(){
   <row label="r3">3</row>`
     
     let CheckboxTextCorrect = 
-`<checkbox label="Q1" atleast="1">
+`<checkbox
+  label="Q1"
+  atleast="1">
   <title>Checkbox question</title>
   <comment>Please select all that apply</comment>
   <row label="r1">1</row>
@@ -157,7 +189,9 @@ describe('Make Checkbox Question', function(){
   <row label="r99">Don't know</row>`
         
     CheckboxTextCorrect = 
-`<checkbox label="Q1" atleast="1">
+`<checkbox
+  label="Q1"
+  atleast="1">
   <title>Checkbox question</title>
   <comment>Please select all that apply</comment>
   <row label="r1">1</row>
@@ -189,7 +223,9 @@ describe('Make Select Question', function(){
   <row label="r3">3</row>`
     
     let SelectTextCorrect = 
-`<select label="Q1" optional="0">
+`<select
+  label="Q1"
+  optional="0">
   <title>Select question</title>
   <comment>Please select one in each row</comment>
   <choice label="ch1">Cell 1</choice>
@@ -256,7 +292,10 @@ describe('Make Float', function(){
 `Q1 Float Text`
 
     let FloatTextCorrect = 
-`<float label="Q1" size="6" optional="0">
+`<float
+  label="Q1"
+  size="6"
+  optional="0">
   <title>Float Text</title>
 </float>`
 
@@ -274,7 +313,10 @@ describe('Make Float', function(){
   `
     
         FloatTextCorrect = 
-`<float label="Q1" size="6" optional="0">
+`<float
+  label="Q1"
+  size="6"
+  optional="0">
   <title>Float Text</title>
   <row label="r1">1</row>
   <row label="r2">2</row>
@@ -296,7 +338,10 @@ describe('Make Number', function(){
 `Q1 Number Text`
 
     let NumberTextCorrect = 
-`<number label="Q1" size="6" optional="0">
+`<number
+  label="Q1"
+  size="6"
+  optional="0">
   <title>Number Text</title>
 </number>
 <suspend/>`
@@ -315,7 +360,10 @@ describe('Make Number', function(){
   `
     
     NumberTextCorrect = 
-`<number label="Q1" size="6" optional="0">
+`<number
+  label="Q1"
+  size="6"
+  optional="0">
   <title>Number Text</title>
   <comment>Please enter a whole number</comment>
   <row label="r1">1</row>
@@ -338,7 +386,10 @@ describe('Make Text', function(){
 `Q1 Text Text`
 
     let TextTextCorrect = 
-`<text label="Q1" size="40" optional="0">
+`<text
+  label="Q1"
+  size="40"
+  optional="0">
   <title>Text Text</title>
   <comment>Please be as specific as possible</comment>
 </text>
@@ -358,7 +409,10 @@ describe('Make Text', function(){
   `
     
     TextTextCorrect = 
-`<text label="Q1" size="40" optional="0">
+`<text
+  label="Q1"
+  size="40"
+  optional="0">
   <title>Text Text</title>
   <comment>Please be as specific as possible</comment>
   <row label="r1">1</row>
@@ -382,7 +436,9 @@ describe('Make TextArea', function(){
 `Q1 TextArea Text`
 
     let TextAreaTextCorrect = 
-`<textarea label="Q1" optional="0">
+`<textarea
+  label="Q1"
+  optional="0">
   <title>TextArea Text</title>
   <comment>Please be as specific as possible</comment>
 </textarea>
@@ -402,7 +458,9 @@ describe('Make TextArea', function(){
   `
     
     TextAreaTextCorrect = 
-`<textarea label="Q1" optional="0">
+`<textarea
+  label="Q1"
+  optional="0">
   <title>TextArea Text</title>
   <comment>Please be as specific as possible</comment>
   <row label="r1">1</row>
@@ -415,5 +473,23 @@ describe('Make TextArea', function(){
         const TextArea = new Components.QuestionConstructor('textarea')
 
         assert.equal(TextArea.run(TextAreaText), TextAreaTextCorrect)
+    })
+})
+
+// Switch Cells Test
+describe('Switch between Cols-Rows', function(){
+    let Text = 
+`  <row group="g1" label="r1">1</row>
+<row label="r2">2</row> <row label="r3">3</row>
+        <row label="r4" open="1" openSize="25" randomize="0">4</row>`
+
+    let TextCorrect = 
+`  <col group="g1" label="c1">1</col>
+  <col label="c2">2</col>
+  <col label="c3">3</col>
+  <col label="c4" open="1" openSize="25" randomize="0">4</col>`
+
+    it('should switch the row cells to col cells', function(){
+        assert.equal(Switch.run(Text), TextCorrect)
     })
 })

@@ -50,6 +50,13 @@ Each of the cell shortcuts are given this string:
   <case label="r4" cond="1">UNDEFINED</case>
 </pipe>
 ```
+
+**ctrl + 5** - Create Group
+```xml
+  <group label="g1">1</group>
+  <group label="g2">2</group>
+  <group label="g3">3</group>
+```
 <br/>
 
 ### Questions
@@ -63,7 +70,7 @@ Q1 This is question text
   <row label="r3">3</row>
 ```
 
-**ctrl + shift + r** - Create Radio Question
+**ctrl + r** - Create Radio Question
 
 ```xml
 <radio label="Q1">
@@ -154,3 +161,9 @@ Q1 This is question text
 ### Snippets
 _____
 **alt + s** - Displays valid snippets for current file type
+
+**shift + alt + b** - Wraps selected text in `<b>` tags
+
+**shift + alt + u** - Wraps selected text in `<u>` tags
+
+**shift + alt + w** - Wraps selected text in blank tags 

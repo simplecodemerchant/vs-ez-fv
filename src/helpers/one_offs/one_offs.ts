@@ -1,10 +1,11 @@
 
-import PipeConstuctor from './pipe';
-import StripTag from './strip';
+import PipeConstuctor from './pipe'
+import StripTag from './strip'
 
 export default class OneOffPointer{
-    func_list: any;
-    func: any;
+    func_list: any
+    public type: string
+    func: any
 
     constructor(type: string){
 
@@ -12,13 +13,13 @@ export default class OneOffPointer{
             pipe: PipeConstuctor,
             strip: StripTag
         }
-
-        this.func = this.func_list[type];
+        this.type = type 
+        this.func = this.func_list[type]
         
     }
 
     run(input: string){
-        return this.func(input);
+        return this.func(input)
     }
     
 }

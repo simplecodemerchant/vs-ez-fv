@@ -1,9 +1,9 @@
 import CellLabelConstructor, { Match } from './cell-label';
 
-type CellType = 'row' | 'col' | 'choice' | 'case'
+type CellType = 'row' | 'col' | 'choice' | 'case' | 'group'
 
 export default class CellConstructor{
-    type:CellType
+    public type:CellType
     extra:string = ''
     prelabel:string = ''
     extraCheck:RegExp | undefined = undefined
@@ -27,6 +27,9 @@ export default class CellConstructor{
                 break;
             case 'case':
                 this.prelabel = 'c'
+                break;
+            case 'group':
+                this.prelabel = 'g'
                 break;
             default:
                 break;
