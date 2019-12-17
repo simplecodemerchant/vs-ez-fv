@@ -124,6 +124,33 @@ new line</title>
     it('should return a radio question and comment if @c is specified ', function(){
         assert.equal(Radio.run(RadioText), RadioTextCorrect)
     })
+
+    RadioText = 
+`Q1 Radio question
+
+new line
+<comment>This is a comment</comment>
+  <row label="r1">1</row>
+  <row label="r2">2</row>
+  <row label="r3">3</row>`
+    
+    RadioTextCorrect = 
+`<radio
+  label="Q1">
+  <title>Radio question
+<br/><br/>
+new line</title>
+  <comment>This is a comment</comment>
+  <row label="r1">1</row>
+  <row label="r2">2</row>
+  <row label="r3">3</row>
+</radio>
+<suspend/>`
+
+    it('should return a radio question and comment if <comment> is specified ', function(){
+        const Radio = new Components.QuestionConstructor('radio')
+        assert.equal(Radio.run(RadioText), RadioTextCorrect)
+    })
 })
 
 

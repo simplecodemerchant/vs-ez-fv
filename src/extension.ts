@@ -14,6 +14,7 @@ export function activate(context: ExtensionContext) {
         ['extension.ezfvCol',        ezfv.col],
         ['extension.ezfvChoice',     ezfv.choice],
         ['extension.ezfvPipe',       ezfv.pipe],
+        ['extension.ezfvGroup',      ezfv.group],
 
         // Questions
         ['extension.ezfvRadio',      ezfv.radio],
@@ -27,6 +28,7 @@ export function activate(context: ExtensionContext) {
 
         // Structures
         ['extension.ezfvSurvey',     ezfv.survey],
+        ['extension.ezfvComment',    ezfv.comment],
 
         // Utilities
         ['extension.ezfvInsertNums', InsertNums],

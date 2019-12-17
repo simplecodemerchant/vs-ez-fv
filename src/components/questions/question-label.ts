@@ -3,7 +3,7 @@
 export default function QuestionLabelConstructor(input: string){
     
     const search_for_cells = /<row|<col|<choice|<style|<group|<net|<exec|<validate|\@([^c][^\s]*)/
-    const search_for_comment = /\@c\s*/
+    const search_for_comment = /(?:\@c|<comment>)\s*/
     const search_for_question = /^(?:\[)*\s*([A-Za-z0-9_]+)\s*(?:\.|\]|\))*\s*([^]*)$/i
     
     let beginning_cells = input.search( search_for_cells )
@@ -15,7 +15,8 @@ export default function QuestionLabelConstructor(input: string){
     
     const question_list = question.split(search_for_comment)
     
-    let question_comment = question_list.slice(1)[0]
+    let question_comment = question_list.length > 1 ? question_list.slice(1)[0].replace('</comment>', '') : undefined
+
     question = question_list.slice(0)[0].trim().replace(/[\n\r]{1,}/g, '\n<br/><br/>\n')
 
 

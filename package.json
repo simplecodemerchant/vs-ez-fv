@@ -43,6 +43,10 @@
                 "title": "ez::pipe"
             },
             {
+                "command": "extension.ezfvGroup",
+                "title": "ez::group"
+            },
+            {
                 "command": "extension.ezfvRadio",
                 "title": "ez::radio"
             },
@@ -80,7 +84,11 @@
             },
             {
                 "command": "extension.ezfvSurvey",
-                "title": "ez::Survey"
+                "title": "ez::survey"
+            },
+            {
+                "command": "extension.ezfvComment",
+                "title": "ez::comment"
             }
         ],
         "keybindings": [
@@ -99,6 +107,10 @@
             {
                 "command": "extension.ezfvPipe",
                 "key": "Ctrl+4"
+            },
+            {
+                "command": "extension.ezfvGroup",
+                "key": "Ctrl+5"
             },
             {
                 "command": "extension.ezfvRadio",
@@ -127,6 +139,10 @@
             {
                 "command": "extension.ezfvTextarea",
                 "key": "Ctrl+Shift+e a"
+            },
+            {
+                "command": "extension.ezfvComment",
+                "key": "Ctrl+6"
             },
             {
                 "key": "Alt+s",
