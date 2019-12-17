@@ -1,6 +1,18 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [0.3.3]
+### Added
+- Ability to `switch` between `<row>` and `<col>` cells
+- Added `<group>` cells
+- Added `<survey>` structure
+- Added `<comment>` structure
+
+### Updated
+- Questions to adhere to programming standards
+- Input cleaning (Unicode, `&`, etc.)
+- `<pipe>` now repositions the cursor after it is inserted
+
 ## [0.3.1]
 ### Fixes
 - Added `<suspend/>` to the end of questions

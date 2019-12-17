@@ -2,7 +2,7 @@
     "name": "vs-ez-fv",
     "displayName": "EZ-FV",
     "description": "Shortcuts for FocusVision's Decipher platform",
-    "version": "0.3.2",
+    "version": "0.3.3",
     "publisher": "matt92martin",
     "engines": {
         "vscode": "^1.40.0"
@@ -151,6 +151,30 @@
             {
                 "key": "Alt+s",
                 "command": "editor.action.insertSnippet"
+            },
+            {
+                "key": "Shift+Alt+b",
+                "command": "editor.action.insertSnippet",
+                "when": "editorTextFocus",
+                "args": {
+                    "snippet": "<b>${0:TM_SELECTED_TEXT}</b>"
+                }
+            },
+            {
+                "key": "Shift+Alt+u",
+                "command": "editor.action.insertSnippet",
+                "when": "editorTextFocus",
+                "args": {
+                    "snippet": "<u>${0:TM_SELECTED_TEXT}</u>"
+                }
+            },
+            {
+                "key": "Shift+Alt+w",
+                "command": "editor.action.insertSnippet",
+                "when": "editorTextFocus",
+                "args": {
+                    "snippet": "<${0:div}>${TM_SELECTED_TEXT}</${0:div}>"
+                }
             }
         ],
         "snippets": [
