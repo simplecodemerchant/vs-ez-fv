@@ -2,7 +2,7 @@
     "name": "vs-ez-fv",
     "displayName": "EZ-FV",
     "description": "Shortcuts for FocusVision's Decipher platform",
-    "version": "0.3.1",
+    "version": "0.3.2",
     "publisher": "matt92martin",
     "engines": {
         "vscode": "^1.40.0"
