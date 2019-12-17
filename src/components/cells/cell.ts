@@ -1,6 +1,6 @@
 import CellLabelConstructor, { Match } from './cell-label';
 
-type CellType = 'row' | 'col' | 'choice' | 'case' | 'group'
+type CellType = 'row' | 'col' | 'choice' | 'case' | 'group' | 'noanswer'
 
 export default class CellConstructor{
     public type:CellType
@@ -30,6 +30,9 @@ export default class CellConstructor{
                 break;
             case 'group':
                 this.prelabel = 'g'
+                break;
+            case 'noanswer':
+                this.prelabel = 'na'
                 break;
             default:
                 break;

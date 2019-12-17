@@ -15,6 +15,8 @@ export function activate(context: ExtensionContext) {
         ['extension.ezfvChoice',     ezfv.choice],
         ['extension.ezfvPipe',       ezfv.pipe],
         ['extension.ezfvGroup',      ezfv.group],
+        ['extension.ezfvImage',      ezfv.image],
+        ['extension.ezfvNoAnswer',   ezfv.noAnswer],
 
         // Questions
         ['extension.ezfvRadio',      ezfv.radio],
@@ -30,6 +32,7 @@ export function activate(context: ExtensionContext) {
         ['extension.ezfvSurvey',     ezfv.survey],
         ['extension.ezfvComment',    ezfv.comment],
         ['extension.ezfvSwitch',     ezfv.switch_cells],
+        ['extension.ezfvHTML',       ezfv.html],
 
         // Utilities
         ['extension.ezfvInsertNums', InsertNums],

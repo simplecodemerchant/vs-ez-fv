@@ -1,6 +1,13 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [0.3.4]
+### Added
+- Image tag
+- No answer cell
+- HTML structure
+
+
 ## [0.3.3]
 ### Added
 - Ability to `switch` between `<row>` and `<col>` cells
