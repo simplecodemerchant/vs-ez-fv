@@ -1,16 +1,13 @@
-import { CellConstructor } from '../../components';
+import { CellConstructor } from '../../components'
 
+export default function PipeConstuctor(input: string) {
+    const cc = new CellConstructor('case')
 
-export default function PipeConstuctor(input: string){
-    
-    const cc = new CellConstructor('case');
+    let pipe_cells = cc.run(input)
 
-    let pipe_cells = cc.run(input);
-
-    let pipe = 
-`<pipe label="" capture="">
+    let pipe = `<pipe label="" capture="">
 ${pipe_cells}
 </pipe>`
-    
-    return pipe;
+
+    return pipe
 }

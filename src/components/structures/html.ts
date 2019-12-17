@@ -6,5 +6,5 @@ export default {
 ${text}
 </html>`
     },
-    type: 'html'
+    type: 'html',
 }
