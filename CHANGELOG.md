@@ -5,6 +5,7 @@ All notable changes to this project will be documented in this file.
 ### Added
 - Image tag
 - No answer cell
+- HTML structure
 
 
 ## [0.3.3]
