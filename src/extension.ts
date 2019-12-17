@@ -32,6 +32,7 @@ export function activate(context: ExtensionContext) {
         ['extension.ezfvSurvey',     ezfv.survey],
         ['extension.ezfvComment',    ezfv.comment],
         ['extension.ezfvSwitch',     ezfv.switch_cells],
+        ['extension.ezfvHTML',       ezfv.html],
 
         // Utilities
         ['extension.ezfvInsertNums', InsertNums],

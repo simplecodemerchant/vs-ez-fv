@@ -3,6 +3,7 @@ import CleanText from './helpers/clean_text'
 import * as Components from './components'
 import OneOffPointer from './helpers/one_offs/one_offs'
 import Window from './helpers/window'
+import Cursor from './helpers/cursor'
 
 
 
@@ -32,9 +33,9 @@ function processSelection( task: any ) {
             })
         }).then(() => {
             if (task.type === 'pipe'){
-                const cursor = editor.selection.active
-                const newCursor = cursor.with(cursor.line, 13)
-                editor.selection = new Selection(newCursor, newCursor)
+                Cursor(13, 0)
+            } else if (task.type === 'html'){
+                Cursor(9, 1)   
             }
         })
     }
@@ -58,3 +59,4 @@ export const comment =      () => processSelection(Components.Comment)
 export const switch_cells = () => processSelection(Components.Switch)
 export const image =        () => processSelection(Components.Image)
 export const noAnswer =     () => processSelection(new Components.CellConstructor( 'noanswer' ))
+export const html =         () => processSelection(Components.HTML)

@@ -2,7 +2,7 @@
     "name": "vs-ez-fv",
     "displayName": "EZ-FV",
     "description": "Shortcuts for FocusVision's Decipher platform",
-    "version": "0.3.3",
+    "version": "0.3.4",
     "publisher": "matt92martin",
     "engines": {
         "vscode": "^1.40.0"
@@ -101,6 +101,10 @@
             {
                 "command": "extension.ezfvNoAnswer",
                 "title": "ez::no answer"
+            },
+            {
+                "command": "extension.ezfvHTML",
+                "title": "ez::html"
             }
         ],
         "keybindings": [
