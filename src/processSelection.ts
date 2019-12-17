@@ -55,3 +55,4 @@ export const text =     () => processSelection(new Components.QuestionConstructo
 export const textarea = () => processSelection(new Components.QuestionConstructor( 'textarea' ))
 export const survey =   () => processSelection(Components.Survey)
 export const comment =  () => processSelection(Components.Comment)
+export const switch_cells =  () => processSelection(Components.Switch)

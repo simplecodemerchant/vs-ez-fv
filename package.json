@@ -89,6 +89,10 @@
             {
                 "command": "extension.ezfvComment",
                 "title": "ez::comment"
+            },
+            {
+                "command": "extension.ezfvSwitch",
+                "title": "ez::switch"
             }
         ],
         "keybindings": [
