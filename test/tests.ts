@@ -2,6 +2,7 @@ import * as assert from 'assert'
 import '../extensions/string.extension'
 import * as Components from '../src/components'
 import OneOffPointer from '../src/helpers/one_offs/one_offs'
+import Switch from '../src/components/utils/switch'
 
 type CellType = 'row' | 'col' | 'choice' | 'case'
 
@@ -472,5 +473,23 @@ describe('Make TextArea', function(){
         const TextArea = new Components.QuestionConstructor('textarea')
 
         assert.equal(TextArea.run(TextAreaText), TextAreaTextCorrect)
+    })
+})
+
+// Switch Cells Test
+describe('Switch between Cols-Rows', function(){
+    let Text = 
+`  <row group="g1" label="r1">1</row>
+<row label="r2">2</row> <row label="r3">3</row>
+        <row label="r4" open="1" openSize="25" randomize="0">4</row>`
+
+    let TextCorrect = 
+`  <col group="g1" label="c1">1</col>
+  <col label="c2">2</col>
+  <col label="c3">3</col>
+  <col label="c4" open="1" openSize="25" randomize="0">4</col>`
+
+    it('should switch the row cells to col cells', function(){
+        assert.equal(Switch.run(Text), TextCorrect)
     })
 })
