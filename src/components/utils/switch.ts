@@ -1,21 +1,25 @@
+interface DType {
+    [key: string]: string
+}
 export default {
     run: (text: string) => {
-        const d = {
+        const d: DType = {
             'r': 'c',
             'c': 'r',
             'row': 'col',
             'col': 'row'
         }
 
-        const reg = /<(row|col)\s{1,}label="(r|c)\d+"([^>]*)>([^<]*)<\/(row|col)>/g
+        const reg = /<(?<tag>row|col)(?<rest>[^>]*?)(?:label="(?<celltype>r|c)(?<celllabel>[0-9a-zA-Z]+)")(?<rest2>[^>]*)>(?<text>[^<]*)<\/(?:row|col)>/g
 
-        let matchArray = []
-        let match
+        let matchArray: string[] = []
+        let m
         
-        while(match = reg.exec(text)){
-            console.log(match)
+        while(m = reg.exec(text)){
+            const g:any = m.groups
+            matchArray.push(`  <${d[g.tag]}${g.rest}label="${d[g.celltype]}${g.celllabel}"${g.rest2}>${g.text}</${d[g.tag]}>`)
         }
 
-        return text
+        return matchArray.join('\n')
     }
 }
