@@ -15,6 +15,8 @@ export function activate(context: ExtensionContext) {
         ['extension.ezfvChoice',     ezfv.choice],
         ['extension.ezfvPipe',       ezfv.pipe],
         ['extension.ezfvGroup',      ezfv.group],
+        ['extension.ezfvImage',      ezfv.image],
+        ['extension.ezfvNoAnswer',   ezfv.noAnswer],
 
         // Questions
         ['extension.ezfvRadio',      ezfv.radio],

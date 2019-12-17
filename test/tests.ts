@@ -3,6 +3,8 @@ import '../extensions/string.extension'
 import * as Components from '../src/components'
 import OneOffPointer from '../src/helpers/one_offs/one_offs'
 import Switch from '../src/components/utils/switch'
+import Image from '../src/components/cells/image'
+
 
 type CellType = 'row' | 'col' | 'choice' | 'case'
 
@@ -491,5 +493,43 @@ describe('Switch between Cols-Rows', function(){
 
     it('should switch the row cells to col cells', function(){
         assert.equal(Switch.run(Text), TextCorrect)
+    })
+})
+
+// Image Test
+describe('Create image tags', function(){
+    let Text = 
+`  test1.jpg
+test2.jpg
+
+test3.jpg
+
+`
+
+    let TextCorrect = 
+`<img src="[rel test1.jpg]" class="custom-img" />
+<img src="[rel test2.jpg]" class="custom-img" />
+<img src="[rel test3.jpg]" class="custom-img" />`
+
+    it('should create image tags', function(){
+        assert.equal(Image.run(Text), TextCorrect)
+    })
+})
+
+// Noanswer Test
+describe('Create Noanswer cells', function(){
+    let Text = 
+`1
+2
+3`
+
+    let TextCorrect = 
+`  <noanswer label="na1">1</noanswer>
+  <noanswer label="na2">2</noanswer>
+  <noanswer label="na3">3</noanswer>`
+
+    it('should create image tags', function(){
+        const NoAnswer = new Components.CellConstructor('noanswer')
+        assert.equal(NoAnswer.run(Text), TextCorrect)
     })
 })

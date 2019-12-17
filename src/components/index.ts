@@ -2,6 +2,7 @@ import CellConstructor from './cells/cell'
 import QuestionConstructor from "./questions/question"
 import Survey from './structures/survey'
 import Comment from './structures/comment'
+import Image from './cells/image'
 import Switch from './utils/switch'
 
 export {
@@ -9,5 +10,6 @@ export {
     QuestionConstructor,
     Survey,
     Comment,
-    Switch
+    Switch,
+    Image
 }

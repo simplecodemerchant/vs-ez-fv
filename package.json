@@ -93,6 +93,14 @@
             {
                 "command": "extension.ezfvSwitch",
                 "title": "ez::switch"
+            },
+            {
+                "command": "extension.ezfvImage",
+                "title": "ez::images"
+            },
+            {
+                "command": "extension.ezfvNoAnswer",
+                "title": "ez::no answer"
             }
         ],
         "keybindings": [
