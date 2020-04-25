@@ -28,7 +28,13 @@ export default function QuestionLabelConstructor(input: string) {
         return false
     }
 
-    const question_label = matches[1]
+    let question_label = matches[1]
+    const startsWithLetter: RegExp = /[A-Za-z]{1,}[A-Z0-9_]*/
+
+    if (!startsWithLetter.test(question_label)){
+        question_label = `Q${question_label}`
+    }
+
     const question_text = matches[2]
 
     return {

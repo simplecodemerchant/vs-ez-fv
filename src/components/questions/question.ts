@@ -53,6 +53,10 @@ export default class QuestionConstructor {
                 ) {
                     this.comment = 'Please select one in each row'
                 }
+                if (question.question_cells.search(/<row|<col|<choice/) === -1){
+                    question.question_cells = `<row label="r1" value="1">True</row>
+  <row label="r0" value="0">False</row>`
+                }
                 break
             case 'select':
                 this.extra = ['optional="0"', ...this.extra]

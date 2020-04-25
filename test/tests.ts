@@ -65,6 +65,49 @@ Cell 3`
                 assert.equal(Cell.run(CellText), CellTextCorrect);
             });
 
+            CellText = 
+`a. Cell 1    
+B. Cell 2    
+c. Cell 3`
+
+            CellTextCorrect = 
+`  <${cell} label="${label}a">Cell 1</${cell}>
+  <${cell} label="${label}B">Cell 2</${cell}>
+  <${cell} label="${label}c">Cell 3</${cell}>`
+
+            it(`should return standard ${cell}s split by newline with text as content and match defined letter labels`, function() {
+                const Cell = new Components.CellConstructor(cell)
+                assert.equal(Cell.run(CellText), CellTextCorrect);
+            });
+
+            CellText = 
+`a1. Cell 1    
+B1. Cell 2    
+c1. Cell 3`
+
+            CellTextCorrect = 
+`  <${cell} label="${label}a1">Cell 1</${cell}>
+  <${cell} label="${label}B1">Cell 2</${cell}>
+  <${cell} label="${label}c1">Cell 3</${cell}>`
+
+            it(`should return standard ${cell}s split by newline with text as content and match defined letter/number labels`, function() {
+                const Cell = new Components.CellConstructor(cell)
+                assert.equal(Cell.run(CellText), CellTextCorrect);
+            });
+
+            CellText = 
+`Text (May 13)
+Text (May 14)`
+
+            CellTextCorrect = 
+`  <${cell} label="${label}1">Text (May 13)</${cell}>
+  <${cell} label="${label}2">Text (May 14)</${cell}>`
+
+            it(`should return standard ${cell}s and not empty ${cell}s`, function() {
+                const Cell = new Components.CellConstructor(cell)
+                assert.equal(Cell.run(CellText), CellTextCorrect);
+            });
+
         });
     });
 }
@@ -75,6 +118,22 @@ CellsTests('row', 'r')
 CellsTests('col', 'c')
 CellsTests('choice', 'ch')
 
+// Custom Cells
+describe('Custom row tests', function(){
+
+    it('OE rows should not apply attributes to rows following them', () => {
+        let Cells = new Components.CellConstructor('row')
+        let CellText =
+`1
+2 Other specify
+3`
+        let CellTextCorrect = 
+`  <row label="r1">1</row>
+  <row label="r2" open="1" openSize="25" randomize="0">2 Other specify</row>
+  <row label="r3">3</row>`
+        assert.equal(Cells.run(CellText), CellTextCorrect)
+    })
+})
 
 // Radio Tests
 describe('Make Radio Question', function(){
@@ -151,6 +210,33 @@ new line</title>
 <suspend/>`
 
     it('should return a radio question and comment if <comment> is specified ', function(){
+        const Radio = new Components.QuestionConstructor('radio')
+        assert.equal(Radio.run(RadioText), RadioTextCorrect)
+    })
+
+    RadioText = 
+`1 Radio question
+
+new line
+<comment>This is a comment</comment>
+  <row label="r1">1</row>
+  <row label="r2">2</row>
+  <row label="r3">3</row>`
+    
+    RadioTextCorrect = 
+`<radio
+  label="Q1">
+  <title>Radio question
+<br/><br/>
+new line</title>
+  <comment>This is a comment</comment>
+  <row label="r1">1</row>
+  <row label="r2">2</row>
+  <row label="r3">3</row>
+</radio>
+<suspend/>`
+
+    it('should return a radio question with label starting with Q', function(){
         const Radio = new Components.QuestionConstructor('radio')
         assert.equal(Radio.run(RadioText), RadioTextCorrect)
     })

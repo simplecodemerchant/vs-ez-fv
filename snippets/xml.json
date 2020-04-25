@@ -170,7 +170,7 @@
     ,"Quota Tag": {
         "prefix": "quota",
         "body": [
-            "<quota sheet=\"$0\"/>"
+            "<quota sheet=\"$1\" label=\"Quota$0\"/>"
         ]
     }
     ,"Randomize Attribute": {
@@ -263,7 +263,7 @@
     ,"Term Tag": {
         "prefix": "term",
         "body": [
-            "<term cond=\"$1\">$0</term>"
+            "<term cond=\"$1\" label=\"Term$2\">$0</term>"
         ]
     }
     ,"Todo Comment": {
@@ -316,6 +316,18 @@
         "prefix": "rtlfix",
         "body": [
             "&#x200E;"
+        ]
+    },"Loop Tag": {
+        "prefix": "loop",
+        "body": [
+            "<loop label=\"Loop$1\" vars=\"$2\">",
+            "  <block label=\"Block$1\">",
+            "",
+            "$0",
+            "",
+            "  </block>",
+            "  <looprow label=\"1\"><loopvar name=\"$2\">1</loopvar></looprow>",
+          "</loop>"
         ]
     }
 

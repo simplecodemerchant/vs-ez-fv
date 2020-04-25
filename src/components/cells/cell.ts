@@ -48,6 +48,8 @@ export default class CellConstructor {
 
         let cells = constructed_cells.map(
             ({ label, content }: Match, idx): string => {
+                this.extra = ''
+                
                 if (
                     this.type === 'row' &&
                     this.extraCheck &&

@@ -13,7 +13,7 @@ class InsertNums {
         this.e = editor
         this.sels = selections
 
-        this.current = sp
+        this.current = sp || 1
 
         if (isNaN(sp) && typeof sp === 'string') {
             this.alpha = true
