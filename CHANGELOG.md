@@ -1,6 +1,22 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [0.3.5]
+### Added
+- Added `<loop>` tag
+
+
+### Fixes
+- Added a label attribute to `<quota>` tags
+- Added a label attribute to `<term>` tags
+- Fixed issue where rows after OE rows had oe attributes
+- Fixed issue with cell labeling
+
+
+### Updated
+- Prepend `Q` to question labels that don't start with a letter
+
+
 ## [0.3.4]
 ### Added
 - Image tag
